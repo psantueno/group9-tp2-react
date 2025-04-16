@@ -1,0 +1,7 @@
+.lista {
+    flex: 1;
+    background-color: #eaeaea;
+    padding: 1rem;
+    border-radius: 8px;
+    color: #000000;
+  }

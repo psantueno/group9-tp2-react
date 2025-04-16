@@ -1,15 +1,14 @@
-import { useState } from 'react'
+
 import './App.css'
-import { Button } from './components/Button/Button'
-import { Title } from './components/Title/Title'
+
+import {Home} from './pages/Home/Home';
 
 
 function App() {
  
   return (
     <>
-      <Title />
-      <Button />
+      <Home />
     </>
   )
 }
