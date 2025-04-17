@@ -10,6 +10,25 @@ const titlePage = "Gestor de Películas y Series";
 
 export const Home = () => {
     //localStorage.clear();
+    const defaultMovie = {
+        titulo: "El Padrino",
+        director: "Francis Ford Coppola",
+        anio: 1972,
+        genero: "Drama",
+        rating: 9.2,
+        tipo: "Pelicula"
+    }
+    const defualtSerie = {
+        titulo: "Breaking Bad",
+        director: "Vince Gilligan",
+        anio: 2008,
+        genero: "Drama",
+        rating: 9.5,
+        tipo: "Serie"
+    }
+    localStorage.setItem('toWatchList', JSON.stringify([defaultMovie]));
+    localStorage.setItem('watchedList', JSON.stringify([defualtSerie]));
+    
     const [search, setSearch] = useState('');
 
     const [toWatchList, setToWatchList] = useState(JSON.parse(localStorage.getItem('toWatchList')) || []);

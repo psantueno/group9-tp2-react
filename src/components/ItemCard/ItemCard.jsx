@@ -28,7 +28,7 @@ const ItemCard = ({ titulo, director, anio, genero, tipo, rating, onStateChange,
             </div>
             <div className="item-info">
                 <Star size="16" fill="#facc15"></Star>
-                <p className="item-rating">Rating:{rating}</p>
+                <p className="item-rating"><strong>Rating: {rating}</strong></p>
             </div>
             <div className="item-options">
                 {watched 
