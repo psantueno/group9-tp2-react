@@ -1,32 +1,42 @@
+
 .container {
+  
     max-width: 960px;
     margin: 0 auto;
     padding: 2rem;
     font-family: Arial, sans-serif;
+    align-items: center;
   }
     
   .filters {
+    
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 2rem;
+    transition: all 0.3s ease;
   }
   
   .input, .select {
+   
     flex: 1;
     padding: 0.5rem;
     font-size: 1rem;
   }
   
   .listas {
+    transition: all 0.3s ease;
     display: flex;
     justify-content: space-between;
     gap: 2rem;
     margin-bottom: 3rem;
+    margin: 20px;
+    align-items: center;
+    
   }
   
   .formulario {
-    background-color: #eaeaea;
+    background-color: #ffffff;
     padding: 1.5rem;
     border-radius: 8px;
   }
@@ -40,9 +50,26 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
   }
   
   .button:hover {
-    background-color: #155d8c;
+    background-color: #79c1f0;
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card {
+  margin: auto;
+  width: min(300px, 100%);
+  background-color: #fefefe;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  color: #141417;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  background-color: #6B6ECC;
+  background: linear-gradient(45deg, #0107ab7b 0%, #6ec4f2 100%);
   }
   

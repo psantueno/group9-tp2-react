@@ -1,6 +1,12 @@
 body {
-  background-color: white;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ffffff, #a0cbe8);
+  background-size: 400% 400%;
+  animation: fondoCeleste 15s ease infinite;
+  color: #000000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  justify-content: center;
+  align-items: center;
 }

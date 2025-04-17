@@ -5,7 +5,6 @@ import { Star } from 'lucide-react';
 import { Play } from 'lucide-react';
 import './Home.css';
 
-
 const titlePage = "Gestor de Películas y Series";
 
 export const Home = () => {
@@ -116,8 +115,12 @@ export const Home = () => {
             {/* Listas */}
 
             <div className="listas">
+
                 <List list={toWatchListProps} /> //{/* renderiza las pelis por ver */}
                 <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
+
+                
+
             </div>
 
             {/* Formulario */}
@@ -149,3 +152,4 @@ export const Home = () => {
         </div>
     );
 };
+
