@@ -116,7 +116,7 @@ export const Home = () => {
 
             <div className="listas">
 
-                <List list={toWatchListProps} /> //{/* renderiza las pelis por ver */}
+                <List list={toWatchListProps} /> {/*// renderiza las pelis por ver */}
                 <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
 
                 

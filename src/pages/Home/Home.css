@@ -1,6 +1,5 @@
 
 .container {
-  
     max-width: 960px;
     margin: 0 auto;
     padding: 2rem;
@@ -9,7 +8,6 @@
   }
     
   .filters {
-    
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -18,12 +16,21 @@
   }
   
   .input, .select {
-   
     flex: 1;
     padding: 0.5rem;
+    border: 1px solid rgb(3, 3, 3);
+    border-radius: 10px;
     font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
   }
   
+  .input, .select:focus {
+    background-color: rgba(255, 255, 255, 1); 
+    border-color: #51b1ff; 
+    box-shadow: 0 0 8px rgba(81, 177, 255, 0.6); 
+    transform: scale(1.02);
+  }
   .listas {
     transition: all 0.3s ease;
     display: flex;
@@ -59,17 +66,23 @@
     transform: scale(1.05);
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
   }
-  
-  .card {
-  margin: auto;
-  width: min(300px, 100%);
-  background-color: #fefefe;
-  border-radius: 1rem;
-  padding: 0.5rem;
-  color: #141417;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  background-color: #6B6ECC;
-  background: linear-gradient(45deg, #0107ab7b 0%, #6ec4f2 100%);
+  .input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: transparent;
+    color: #222;
+    transition: all 0.3s ease;
+    outline: none;
   }
+  
+  .input:focus {
+    background-color: rgba(255, 255, 255, 1); 
+    border-color: #51b1ff; 
+    box-shadow: 0 0 8px rgba(81, 177, 255, 0.6); 
+    transform: scale(1.02);
+  }
+  
+  
   

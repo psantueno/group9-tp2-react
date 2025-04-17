@@ -46,15 +46,18 @@
 }
 
 .button-watched:hover{
-    background-color: #45a049;
+    background-color: #70d875;
+    transform: scale(1.05);
 }
 
 .button-edit{
     background-color: #008CBA;
 }
 
+
 .button-edit:hover{
-    background-color: #007bb5;
+    background-color: #2eb2ef;
+    transform: scale(1.05);
 }
 
 .button-delete{
@@ -62,5 +65,6 @@
 }
 
 .button-delete:hover{
-    background-color: #e53935;
+    background-color: #ff706e;
+    transform: scale(1.05);
 }
