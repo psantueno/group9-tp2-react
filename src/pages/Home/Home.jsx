@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Title } from '../../components/Title/Title';
 import { List } from '../../components/List/List';
+import {Contador} from '../../components/Contador/Contador';
 import { Star } from 'lucide-react';
 import { Play } from 'lucide-react';
 import './Home.css';
@@ -115,11 +116,15 @@ export const Home = () => {
             {/* Listas */}
 
             <div className="listas">
+            
+
 
                 <List list={toWatchListProps} /> {/*// renderiza las pelis por ver */}
-                <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
+                <br></br>
+                <Contador titulo="Total Por Ver" items={toWatchList} />
 
-                
+                <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
+                <Contador titulo="Total Vistas" items={watchedList} />
 
             </div>
 
