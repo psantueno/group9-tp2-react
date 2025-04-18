@@ -141,6 +141,10 @@ export const Home = () => {
                         <option value="Drama">Drama</option>
                         <option value="Comedia">Comedia</option>
                         <option value="Acción">Acción</option>
+                        <option value="aventura">Aventura</option>
+                        <option value="terror">Terror</option>
+                        <option value="romantica">Románticas</option>
+                        <option value="ciencia ficción">Ciencia Ficción</option>
                     </select>
 
                     <input className="input" name="rating" id="rating" type="number" placeholder="Rating (1-10)" min="1" max="10" required/>
