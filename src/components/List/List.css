@@ -1,15 +1,17 @@
 .lista {
     min-width: 400px;
     flex: 1;
-    background: linear-gradient(to bottom, #bedaff, #ebf7ff);
+    background: #ffffffc0;
     padding: 1rem;
     border-radius: 8px;
     margin:20xp;
     transition: background-color 0.3s ease;
     color: #000000;
+    
   }
 
   .lista:hover {
-    background-color: rgba(255, 255, 255, 0.4); /* Más resaltado al pasar el mouse */
+    background-color: rgb(255, 255, 255); 
+    transform: scale(1.015);
   }
   
