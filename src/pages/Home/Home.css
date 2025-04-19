@@ -51,25 +51,7 @@
     border-radius: 8px;
    
   }
-  
-  .button {
-    margin-top: 1rem;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    background-color: #1d72b8;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #79c1f0;
-    transform: scale(1.05);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-  }
+
   .input {
     flex: 1;
     padding: 0.5rem 0.75rem;

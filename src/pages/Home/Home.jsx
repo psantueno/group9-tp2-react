@@ -4,6 +4,7 @@ import { List } from '../../components/List/List';
 import {Contador} from '../../components/Contador/Contador';
 import { Star } from 'lucide-react';
 import { Play } from 'lucide-react';
+import Button from '../../components/Button/Button';
 import './Home.css';
 
 const titlePage = "Gestor de Películas y Series";
@@ -17,17 +18,19 @@ export const Home = () => {
         genero: "Drama",
         rating: 9.2,
         tipo: "Pelicula"
-    }
-    const defualtSerie = {
+    };
+    const defaultSerie = {
         titulo: "Breaking Bad",
         director: "Vince Gilligan",
         anio: 2008,
         genero: "Drama",
         rating: 9.5,
         tipo: "Serie"
+    };
+    if((localStorage.getItem('toWatchList') === null && localStorage.getItem('watchedList') === null) || (localStorage.getItem('toWatchList') === "[]" && localStorage.getItem('watchedList') === "[]")){
+        localStorage.setItem('toWatchList', JSON.stringify([defaultMovie]));
+        localStorage.setItem('watchedList', JSON.stringify([defaultSerie]));
     }
-    localStorage.setItem('toWatchList', JSON.stringify([defaultMovie]));
-    localStorage.setItem('watchedList', JSON.stringify([defualtSerie]));
     
     const [search, setSearch] = useState('');
 
@@ -65,19 +68,44 @@ export const Home = () => {
         }
     }
 
+    const editItem = (previousItemTitle, editedItem) => {
+        const toWatchList = JSON.parse(localStorage.getItem('toWatchList')) || [];
+
+        if(toWatchList.some((i) => i.titulo === previousItemTitle)){
+            setToWatchList(toWatchList.map((i) => i.titulo === previousItemTitle ? editedItem : i));
+        }else{
+            setWatchedList(watchedList.map((i) => i.titulo === previousItemTitle ? editedItem : i));
+        }
+    };
+    
+    const deleteItem = (item) => {
+        const toWatchList = JSON.parse(localStorage.getItem('toWatchList')) || [];
+        const watchedList = JSON.parse(localStorage.getItem('watchedList')) || [];
+
+        if(toWatchList.some((i) => i.titulo === item.titulo)){
+            setToWatchList(toWatchList.filter((i) => i.titulo !== item.titulo));
+        }else{
+            setWatchedList(watchedList.filter((i) => i.titulo !== item.titulo));
+        }
+    };
+
     const toWatchListProps = {
         subtitle: "Por ver",
         sentence: "Añade una serie o película.",
         itemsList: toWatchList,
         icon: <Play fill="lightgreen" strokeWidth={1} size={24} />,
-        stateChangeAction: changeItemState
+        stateChangeAction: changeItemState,
+        editItemAction: editItem,
+        deleteItemAction: deleteItem
     };
     const watchedListProps = {
         subtitle: "Vistas",
         sentence: "Aún no has añadido una pelicula o serie como vista.",
         itemsList: watchedList,
         icon: <Star fill="yellow" strokeWidth={0.5} size={24} />,
-        stateChangeAction: changeItemState
+        stateChangeAction: changeItemState,
+        editItemAction: editItem,
+        deleteItemAction: deleteItem
     };
 
     return (
@@ -116,16 +144,14 @@ export const Home = () => {
             {/* Listas */}
 
             <div className="listas">
-            
-
-
-                <List list={toWatchListProps} /> {/*// renderiza las pelis por ver */}
-                <br></br>
-                <Contador titulo="Total Por Ver" items={toWatchList} />
-
-                <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
-                <Contador titulo="Total Vistas" items={watchedList} />
-
+                <div>
+                    <Contador titulo="Total Por Ver" items={toWatchList} />
+                    <List list={toWatchListProps} /> {/*// renderiza las pelis por ver */}
+                </div>
+                <div>
+                    <Contador titulo="Total Vistas" items={watchedList} />
+                    <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
+                </div>
             </div>
 
             {/* Formulario */}
@@ -155,7 +181,7 @@ export const Home = () => {
                         <option value="Serie">Serie</option>
                     </select>
 
-                    <button className="button" type="submit">Agregar</button>
+                    <Button type="submit" className="button button-primary" label="Agregar"/>
                 </form>
             </div>
         </div>

@@ -1,17 +1,62 @@
 .button{
-margin-top: 1rem;
-padding: 0.7rem 1.5rem;
-font-size: 1rem;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-transition: all 0.3s ease;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    flex-grow: 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
 }
 
-.button:hover {
-background-color: #79c1f0;
-transform: scale(1.05);
-box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+.button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.button-primary{
+    background-color: #1d72b8;
+}
+
+.button-primary:hover{
+    background-color: #79c1f0;
+}
+
+.button-green{
+    background-color: #4CAF50;
+}
+
+.button-green:hover{
+    background-color: #70d875;
+}
+
+.button-blue{
+    background-color: #008CBA;
+}
+
+.button-blue:hover{
+    background-color: #2eb2ef;
+}
+
+.button-red{
+    background-color: #f44336;
+}
+
+.button-red:hover{
+    background-color: #ff706e;
+}
+
+.button-gray{
+    background-color: #5A5A5A;
+}
+
+.button-gray:hover{
+    background-color: #7E7E7E;
+}
+
+.button-confirm{
+    background-color: #2E7D32;
+}
+
+.button-confirm:hover{
+    background-color: #388E3C;
 }
