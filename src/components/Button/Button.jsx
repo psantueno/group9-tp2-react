@@ -1,7 +1,9 @@
+import "./Button.css";
 
-export const Button = () => {
-
-    return (
-    <button>Main Button</button>
-  )
+const Button = ({ type = "button", label, className, onClick }) => {
+    return(
+      <button type={type} className={className} onClick={onClick}>{label}</button>
+    )
 }
+
+export default Button;
