@@ -35,7 +35,8 @@ export const Home = () => {
     const [search, setSearch] = useState('');
     const [toWatchList, setToWatchList] = useState(JSON.parse(localStorage.getItem('toWatchList')) || []);
     const [watchedList, setWatchedList] = useState(JSON.parse(localStorage.getItem('watchedList')) || []);
-    const [mostrarFormulario, setMostrarFormulario] = useState(false);
+    const [showForm, setShowForm] = useState(false);
+  
 
     useEffect(() => {
         localStorage.setItem('toWatchList', JSON.stringify(toWatchList));
@@ -122,7 +123,7 @@ export const Home = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     className="input"
-                />
+               />
 
                 <select className="select">
                     <option value="">Todos los géneros</option>
@@ -154,41 +155,42 @@ export const Home = () => {
                 <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
             </section>
 
-            <button className="button button-primary" onClick={() => setMostrarFormulario(!mostrarFormulario)}>
-                {mostrarFormulario ? "Finalizar" : "Añadir"}
+            <button className="button button-primary" onClick={() => setShowForm(!showForm)}>
+             {showForm ? "Finalizar" : "Añadir"}
             </button>
+         
+            {showForm && (<div className="formulario">
+                 <h2>Agregar nueva película o serie</h2>
+     <form onSubmit={handleSubmit}>
+      <input className="input" name="titulo" id="titulo" type="text" placeholder="Título" required />
+      <input className="input" name="director" id="director" type="text" placeholder="Director" required />
+      <input className="input" name="anio" id="anio" type="number" placeholder="Año" min="0" max="2025" required />
 
-            {mostrarFormulario && (<div className="formulario">
-                <h2>Agregar nueva película o serie</h2>
-                <form onSubmit={handleSubmit}>
-                    <input className="input" name="titulo" id="titulo" type="text" placeholder="Título" required />
-                    <input className="input" name="director" id="director" type="text" placeholder="Director" required />
-                    <input className="input" name="anio" id="anio" type="number" placeholder="Año" min="0" max="2025" required />
+      <select className="select" name="genero" id="genero">
+        <option value="">Género</option>
+        <option value="Drama">Drama</option>
+        <option value="Comedia">Comedia</option>
+        <option value="Acción">Acción</option>
+        <option value="aventura">Aventura</option>
+        <option value="terror">Terror</option>
+        <option value="romantica">Románticas</option>
+        <option value="ciencia ficción">Ciencia Ficción</option>
+      </select>
 
-                    <select className="select" name="genero" id="genero">
-                        <option value="">Género</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Comedia">Comedia</option>
-                        <option value="Acción">Acción</option>
-                        <option value="aventura">Aventura</option>
-                        <option value="terror">Terror</option>
-                        <option value="romantica">Románticas</option>
-                        <option value="ciencia ficción">Ciencia Ficción</option>
-                    </select>
+      <input className="input" name="rating" id="rating" type="number" placeholder="Rating (1-10)" min="1" max="10" required />
 
-                    <input className="input" name="rating" id="rating" type="number" placeholder="Rating (1-10)" min="1" max="10" required />
+      <select className="select" name="tipo" id="tipo">
+        <option value="">Tipo</option>
+        <option value="Pelicula">Película</option>
+        <option value="Serie">Serie</option>
+      </select>
 
-                    <select className="select" name="tipo" id="tipo">
-                        <option value="">Tipo</option>
-                        <option value="Pelicula">Película</option>
-                        <option value="Serie">Serie</option>
-                    </select>
+      <Button type="submit" className="button button-primary" label="Agregar" />
+    </form>
+  </div>
+)}
+    
+</div> 
+)
 
-                    <Button type="submit" className="button button-primary" label="Agregar" />
-                </form>
-            </div>
-            )}
-
-        </div>
-    )
 }
