@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Title } from '../../components/Title/Title';
 import { List } from '../../components/List/List';
-import {Contador} from '../../components/Contador/Contador';
+import { Counter } from '../../components/Counter/Counter';
 import { Star } from 'lucide-react';
 import { Play } from 'lucide-react';
 import Button from '../../components/Button/Button';
@@ -27,15 +27,16 @@ export const Home = () => {
         rating: 9.5,
         tipo: "Serie"
     };
-    if((localStorage.getItem('toWatchList') === null && localStorage.getItem('watchedList') === null) || (localStorage.getItem('toWatchList') === "[]" && localStorage.getItem('watchedList') === "[]")){
+    if ((localStorage.getItem('toWatchList') === null && localStorage.getItem('watchedList') === null) || (localStorage.getItem('toWatchList') === "[]" && localStorage.getItem('watchedList') === "[]")) {
         localStorage.setItem('toWatchList', JSON.stringify([defaultMovie]));
         localStorage.setItem('watchedList', JSON.stringify([defaultSerie]));
     }
-    
-    const [search, setSearch] = useState('');
 
+    const [search, setSearch] = useState('');
     const [toWatchList, setToWatchList] = useState(JSON.parse(localStorage.getItem('toWatchList')) || []);
     const [watchedList, setWatchedList] = useState(JSON.parse(localStorage.getItem('watchedList')) || []);
+    const [showForm, setShowForm] = useState(false);
+  
 
     useEffect(() => {
         localStorage.setItem('toWatchList', JSON.stringify(toWatchList));
@@ -59,10 +60,10 @@ export const Home = () => {
         const toWatchList = JSON.parse(localStorage.getItem('toWatchList')) || [];
         const watchedList = JSON.parse(localStorage.getItem('watchedList')) || [];
 
-        if(toWatchList.some((i) => i.titulo === item.titulo)){
+        if (toWatchList.some((i) => i.titulo === item.titulo)) {
             setToWatchList(toWatchList.filter((i) => i.titulo !== item.titulo));
             setWatchedList([...watchedList, item]);
-        }else{
+        } else {
             setWatchedList(watchedList.filter((i) => i.titulo !== item.titulo));
             setToWatchList([...toWatchList, item]);
         }
@@ -71,20 +72,20 @@ export const Home = () => {
     const editItem = (previousItemTitle, editedItem) => {
         const toWatchList = JSON.parse(localStorage.getItem('toWatchList')) || [];
 
-        if(toWatchList.some((i) => i.titulo === previousItemTitle)){
+        if (toWatchList.some((i) => i.titulo === previousItemTitle)) {
             setToWatchList(toWatchList.map((i) => i.titulo === previousItemTitle ? editedItem : i));
-        }else{
+        } else {
             setWatchedList(watchedList.map((i) => i.titulo === previousItemTitle ? editedItem : i));
         }
     };
-    
+
     const deleteItem = (item) => {
         const toWatchList = JSON.parse(localStorage.getItem('toWatchList')) || [];
         const watchedList = JSON.parse(localStorage.getItem('watchedList')) || [];
 
-        if(toWatchList.some((i) => i.titulo === item.titulo)){
+        if (toWatchList.some((i) => i.titulo === item.titulo)) {
             setToWatchList(toWatchList.filter((i) => i.titulo !== item.titulo));
-        }else{
+        } else {
             setWatchedList(watchedList.filter((i) => i.titulo !== item.titulo));
         }
     };
@@ -108,8 +109,6 @@ export const Home = () => {
         deleteItemAction: deleteItem
     };
 
-   
-    const [showForm, setShowForm] = useState(false);
 
     return (
         <div className="container">
@@ -144,18 +143,17 @@ export const Home = () => {
                 </select>
             </div>
 
-            {/* Listas */}
+            {/* Contadores */}
+            <section className="contadores">
+                <Counter titulo="Total Por Ver" items={toWatchList} />
+                <Counter titulo="Total Vistas" items={watchedList} />
+            </section>
 
-            <div className="listas">
-                <div>
-                    <Contador titulo="Total Por Ver" items={toWatchList} />
-                    <List list={toWatchListProps} /> {/*// renderiza las pelis por ver */}
-                </div>
-                <div>
-                    <Contador titulo="Total Vistas" items={watchedList} />
-                    <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
-                </div>
-            </div>
+            {/* Listas */}
+            <section className="listas">
+                <List list={toWatchListProps} /> {/*// renderiza las pelis por ver */}
+                <List list={watchedListProps} /> {/*//  renderiza las pelis ya vistas.*/}
+            </section>
 
             <button className="button button-primary" onClick={() => setShowForm(!showForm)}>
              {showForm ? "Finalizar" : "Añadir"}
@@ -194,4 +192,5 @@ export const Home = () => {
     
 </div> 
 )
+
 }

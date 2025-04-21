@@ -1,3 +1,5 @@
+// esto viene a cumplir un rol de hook. Se encarga de procesar el formulario.
+
 import "./InputCardForm.css";
 import { useState } from "react";
 
