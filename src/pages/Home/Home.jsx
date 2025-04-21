@@ -109,7 +109,7 @@ export const Home = () => {
     };
 
    
-    const [mostrarFormulario, setMostrarFormulario] = useState(false);
+    const [showForm, setShowForm] = useState(false);
 
     return (
         <div className="container">
@@ -124,7 +124,7 @@ export const Home = () => {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     className="input"
-                />
+               />
 
                 <select className="select">
                     <option value="">Todos los géneros</option>
@@ -157,11 +157,11 @@ export const Home = () => {
                 </div>
             </div>
 
-            <button className="button button-primary" onClick={() => setMostrarFormulario(!mostrarFormulario)}>
-             {mostrarFormulario ? "Finalizar" : "Añadir"}
+            <button className="button button-primary" onClick={() => setShowForm(!showForm)}>
+             {showForm ? "Finalizar" : "Añadir"}
             </button>
          
-            {mostrarFormulario && (<div className="formulario">
+            {showForm && (<div className="formulario">
                  <h2>Agregar nueva película o serie</h2>
      <form onSubmit={handleSubmit}>
       <input className="input" name="titulo" id="titulo" type="text" placeholder="Título" required />
