@@ -1,7 +1,7 @@
 import React from 'react';
-import './Contador.css';
+import './Counter.css';
 
-export const Contador = ({ titulo, items }) => {
+export const Counter = ({ titulo, items }) => {
   const total = items.length;
 
   const porGenero = items.reduce((acc, item) => {
@@ -11,7 +11,7 @@ export const Contador = ({ titulo, items }) => {
   }, {});
 
   return (
-    <div className="contador">
+    <div className="counter">
       <h3>{titulo}</h3>
       <p>Total: <strong>{total}</strong></p>
       <ul>
