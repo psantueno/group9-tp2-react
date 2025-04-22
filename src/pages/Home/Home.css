@@ -97,17 +97,7 @@
     background-color: #0056b3;
   }
 
-  .contadores { 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 20px;
-  }
 
-  .contadores > * {
-    min-width: 300px; /* Ancho mínimo fijo para los hijos */
-    flex: 1; /* Permite que los hijos crezcan uniformemente */
-}
+
 
   

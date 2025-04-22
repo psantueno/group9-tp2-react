@@ -5,6 +5,7 @@
     border-radius: 10px;
     box-shadow: 0 0 6px rgba(0,0,0,0.1);
     max-width: 450px;
+    min-height: 150px;
     align-items: center;
     text-align: center;
   }
@@ -24,4 +25,17 @@
     margin: 4px 0;
     color: #444;
   }
+
+  .contadores { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 20px;
+  }
+
+  .contadores > * {
+    min-width: 300px; /* Ancho mínimo fijo para los hijos */
+    flex: 1; /* Permite que los hijos crezcan uniformemente */
+}
   
