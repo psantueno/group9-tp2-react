@@ -1,13 +1,11 @@
 // aca podemos usar una bandera en el caso que no existan elementos para mostrar.
-import { Check, Edit, Trash2 } from 'lucide-react';
 import './List.css';
+import Item from '../Item/Item';
 
 export const List = ({ list }) => {
-    const { subtitle, sentence, itemsList, icon, stateChangeAction, editItemAction, deleteItemAction, typeList } = list;
+    const { subtitle, sentence, itemsList, icon, stateChangeAction, editItemAction, deleteItemAction, typeList} = list;
     const empty = itemsList.length === 0;
-    const watched = subtitle === "Vistas" ? true : false;
-
-
+    console.log(typeList);
     return (
         <div className="lista">
             <div className="header">
@@ -34,28 +32,7 @@ export const List = ({ list }) => {
                     </thead>
                     <tbody>
                         {itemsList.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.titulo}</td>
-                                <td>{item.director}</td>
-                                <td>{item.genero}</td>
-                                <td>{item.tipo}</td>
-                                <td>{item.anio}</td>
-                                <td>{item.rating}</td>
-                                {typeList !== 'Resultados'
-                                    ? <td className="acciones">
-                                        <button onClick={() => stateChangeAction(item)} title="Marcar como vista/no vista">
-                                            <Check size={18} strokeWidth={2} />
-                                        </button>
-                                        <button onClick={() => editItemAction(item)} title="Editar">
-                                            <Edit size={18} strokeWidth={2} />
-                                        </button>
-                                        <button onClick={() => deleteItemAction(item)} title="Eliminar">
-                                            <Trash2 size={18} strokeWidth={2} />
-                                        </button>
-                                    </td>
-                                    : <td>{item.listType}</td>
-                                }
-                            </tr>
+                            <Item titulo={item.titulo} director={item.director} genero={item.genero} tipo={item.tipo} anio={item.anio} rating={item.rating} listType={item.listType} index={index} onStateChange={stateChangeAction} onEdit={editItemAction} onDelete={deleteItemAction} typeList={typeList}></Item>
                         ))}
                     </tbody>
                 </table>

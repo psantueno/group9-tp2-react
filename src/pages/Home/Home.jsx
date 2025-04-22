@@ -38,16 +38,18 @@ export const Home = () => {
         e.target.reset();
     };
 
-    const changeItemState = (item) => {
+    const changeItemState = (titulo) => {
         const toWatchList = JSON.parse(localStorage.getItem('toWatchList')) || [];
         const watchedList = JSON.parse(localStorage.getItem('watchedList')) || [];
 
-        if (toWatchList.some((i) => i.titulo === item.titulo)) {
-            setToWatchList(toWatchList.filter((i) => i.titulo !== item.titulo));
+        const item = toWatchList.find((i) => i.titulo === titulo);
+        if(item){
             setWatchedList([...watchedList, item]);
-        } else {
-            setWatchedList(watchedList.filter((i) => i.titulo !== item.titulo));
+            setToWatchList(toWatchList.filter((i) => i.titulo !== titulo));
+        }else{
+            const item = watchedList.find((i) => i.titulo === titulo);
             setToWatchList([...toWatchList, item]);
+            setWatchedList(watchedList.filter((i) => i.titulo !== titulo));
         }
     }
 
@@ -61,14 +63,14 @@ export const Home = () => {
         }
     };
 
-    const deleteItem = (item) => {
+    const deleteItem = (titulo) => {
         const toWatchList = JSON.parse(localStorage.getItem('toWatchList')) || [];
         const watchedList = JSON.parse(localStorage.getItem('watchedList')) || [];
 
-        if (toWatchList.some((i) => i.titulo === item.titulo)) {
-            setToWatchList(toWatchList.filter((i) => i.titulo !== item.titulo));
+        if (toWatchList.some((i) => i.titulo === titulo)) {
+            setToWatchList(toWatchList.filter((i) => i.titulo !== titulo));
         } else {
-            setWatchedList(watchedList.filter((i) => i.titulo !== item.titulo));
+            setWatchedList(watchedList.filter((i) => i.titulo !== titulo));
         }
     };
 
@@ -90,6 +92,7 @@ export const Home = () => {
         sentence: "Añade una serie o película.",
         itemsList: toWatchList,
         icon: <Play fill="lightgreen" strokeWidth={1} size={24} />,
+        typeList: "Por Ver",
         stateChangeAction: changeItemState,
         editItemAction: editItem,
         deleteItemAction: deleteItem
@@ -111,6 +114,7 @@ export const Home = () => {
         sentence: "Aún no has añadido una pelicula o serie como vista.",
         itemsList: watchedList,
         icon: <Star fill="yellow" strokeWidth={0.5} size={24} />,
+        typeList: "Vistas",
         stateChangeAction: changeItemState,
         editItemAction: editItem,
         deleteItemAction: deleteItem
@@ -237,7 +241,7 @@ export const Home = () => {
                         <option value="ciencia ficción">Ciencia Ficción</option>
                     </select>
 
-                    <input className="input" name="rating" id="rating" type="number" placeholder="Rating (1-10)" min="1" max="10" required />
+                    <input className="input" name="rating" id="rating" type="number" placeholder="Rating (1-10)" min="1" max="10" step="0.1" required />
 
                     <select className="select" name="tipo" id="tipo">
                         <option value="">Tipo</option>
