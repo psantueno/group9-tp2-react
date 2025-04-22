@@ -10,34 +10,15 @@ import './Home.css';
 const titlePage = "Gestor de Películas y Series";
 
 export const Home = () => {
-    //localStorage.clear();
-    // const defaultMovie = {
-    //     titulo: "El Padrino",
-    //     director: "Francis Ford Coppola",
-    //     anio: 1972,
-    //     genero: "Drama",
-    //     rating: 9.2,
-    //     tipo: "Pelicula"
-    // };
-    // const defaultSerie = {
-    //     titulo: "Breaking Bad",
-    //     director: "Vince Gilligan",
-    //     anio: 2008,
-    //     genero: "Drama",
-    //     rating: 9.5,
-    //     tipo: "Serie"
-    // };
-    // if ((localStorage.getItem('toWatchList') === null && localStorage.getItem('watchedList') === null) || (localStorage.getItem('toWatchList') === "[]" && localStorage.getItem('watchedList') === "[]")) {
-    //     localStorage.setItem('toWatchList', JSON.stringify([defaultMovie]));
-    //     localStorage.setItem('watchedList', JSON.stringify([defaultSerie]));
-    // }
+
 
     const [search, setSearch] = useState('');
     const [toWatchList, setToWatchList] = useState(JSON.parse(localStorage.getItem('toWatchList')) || []);
     const [watchedList, setWatchedList] = useState(JSON.parse(localStorage.getItem('watchedList')) || []);
-     const [showForm, setShowForm] = useState(false);
+    const [showForm, setShowForm] = useState(false);
     const [genreFilter, setGenreFilter] = useState(''); // Estado para el filtro de género
     const [typeFilter, setTypeFilter] = useState('');  // Estado para el filtro tipo (Peli/Serie)
+    const [sortCriteria, setSortCriteria] = useState(''); // Estado para el criterio de ordenamiento
 
     useEffect(() => {
         localStorage.setItem('toWatchList', JSON.stringify(toWatchList));
@@ -135,6 +116,24 @@ export const Home = () => {
         deleteItemAction: deleteItem
     };
 
+    const sortList = (list) => {
+        if (sortCriteria === 'year-asc') {
+            return [...list].sort((a, b) => a.anio - b.anio); // Ordenar por año ascendente
+        }
+        if (sortCriteria === 'year-desc') {
+            return [...list].sort((a, b) => b.anio - a.anio); // Ordenar por año descendente
+        }
+        if (sortCriteria === 'rating-asc') {
+            return [...list].sort((a, b) => a.rating - b.rating); // Ordenar por rating ascendente
+        }
+        if (sortCriteria === 'rating-desc') {
+            return [...list].sort((a, b) => b.rating - a.rating); // Ordenar por rating descendente
+        }
+        return list; // Si no hay criterio, devolver la lista sin cambios
+    };
+
+    const sortedFilteredList = sortList(filteredList);
+
 
     return (
         <div className="container">
@@ -174,12 +173,25 @@ export const Home = () => {
                     <option value="serie">Serie</option>
                 </select>
 
+                <select
+                    className="select"
+                    value={sortCriteria}
+                    onChange={(e) => setSortCriteria(e.target.value)}
+                >
+                    <option value="">- Ordenar por -</option>
+                    <option value="year-asc">Año (Ascendente)</option>
+                    <option value="year-desc">Año (Descendente)</option>
+                    <option value="rating-asc">Rating (Ascendente)</option>
+                    <option value="rating-desc">Rating (Descendente)</option>
+                </select>
+
                 <button
                     className="button button-primary"
                     onClick={() => {
                         setSearch('');
                         setGenreFilter('');
                         setTypeFilter('');
+                        setSortCriteria('');
                     }}
                 >
                     Limpiar Filtros
@@ -188,7 +200,7 @@ export const Home = () => {
 
             {/* Tabla de resultados */}
             <section className="listas">
-                {(search !== '' || genreFilter !== '' || typeFilter !== '') && filteredList.length >= 0 && <List list={searchFilterList} />}
+                {(search !== '' || genreFilter !== '' || typeFilter !== '') && filteredList.length >= 0 && <List list={{...searchFilterList, itemsList: sortedFilteredList}} />}
             </section>
 
             {/* Contadores */}
