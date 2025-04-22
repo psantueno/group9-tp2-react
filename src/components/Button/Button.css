@@ -13,6 +13,21 @@
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
 }
 
+
+.button {
+    background-color: #1d72b8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Cuando el formulario se muestra */
+  .button-open {
+    background-color: red;
+  }
 .button-primary{
     background-color: #1d72b8;
     display: flex;

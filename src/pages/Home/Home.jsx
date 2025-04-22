@@ -219,8 +219,9 @@ export const Home = () => {
                 <List list={watchedListProps} />
             </section>
 
-            <button className="button button-primary" onClick={() => setShowForm(!showForm)}>
-                {showForm ? "Finalizar" : "Añadir"}
+            <button className={`button ${showForm ? "button-open" : ""}`} 
+             onClick={() => setShowForm(!showForm)}>
+                {showForm ? "Cerrar Formulario" : "Añadir Pelicula o serie"}
             </button>
 
             {showForm && (<div className="formulario">
@@ -230,8 +231,8 @@ export const Home = () => {
                     <input className="input" name="director" id="director" type="text" placeholder="Director" required />
                     <input className="input" name="anio" id="anio" type="number" placeholder="Año" min="0" max="2025" required />
 
-                    <select className="select" name="genero" id="genero">
-                        <option value="">Género</option>
+                    <select className="select" name="genero" id="genero"  required>
+                        <option value="Género" disabled hidden>Género</option>
                         <option value="Drama">Drama</option>
                         <option value="Comedia">Comedia</option>
                         <option value="Acción">Acción</option>
@@ -243,8 +244,8 @@ export const Home = () => {
 
                     <input className="input" name="rating" id="rating" type="number" placeholder="Rating (1-10)" min="1" max="10" step="0.1" required />
 
-                    <select className="select" name="tipo" id="tipo">
-                        <option value="">Tipo</option>
+                    <select className="select" name="tipo" id="tipo" required>
+                        <option value="Tipo" disabled hidden>Tipo</option>
                         <option value="Pelicula">Película</option>
                         <option value="Serie">Serie</option>
                     </select>
