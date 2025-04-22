@@ -3,9 +3,10 @@ import { Check, Edit, Trash2 } from 'lucide-react';
 import './List.css';
 
 export const List = ({ list }) => {
-    const { subtitle, sentence, itemsList, icon, stateChangeAction, editItemAction, deleteItemAction } = list;
+    const { subtitle, sentence, itemsList, icon, stateChangeAction, editItemAction, deleteItemAction, typeList } = list;
     const empty = itemsList.length === 0;
     const watched = subtitle === "Vistas" ? true : false;
+
 
     return (
         <div className="lista">
@@ -25,29 +26,35 @@ export const List = ({ list }) => {
                             <th>Tipo</th>
                             <th>Año</th>
                             <th>Rating</th>
-                            <th>Acciones</th>
+                            {typeList !== 'Resultados'
+                            ? <th>Acciones</th>
+                            : <th>Lista</th>
+                            }
                         </tr>
                     </thead>
                     <tbody>
-                        {itemsList.map((item) => (
-                            <tr key={item.titulo}>
+                        {itemsList.map((item, index) => (
+                            <tr key={index}>
                                 <td>{item.titulo}</td>
                                 <td>{item.director}</td>
                                 <td>{item.genero}</td>
                                 <td>{item.tipo}</td>
                                 <td>{item.anio}</td>
                                 <td>{item.rating}</td>
-                                <td className="acciones">
-                                    <button onClick={() => stateChangeAction(item)} title="Marcar como vista/no vista">
-                                        <Check size={18} strokeWidth={2}/>
-                                    </button>
-                                    <button onClick={() => editItemAction(item)} title="Editar">
-                                        <Edit size={18} strokeWidth={2}/>
-                                    </button>
-                                    <button onClick={() => deleteItemAction(item)} title="Eliminar">
-                                        <Trash2 size={18} strokeWidth={2} />
-                                    </button>
-                                </td>
+                                {typeList !== 'Resultados'
+                                    ? <td className="acciones">
+                                        <button onClick={() => stateChangeAction(item)} title="Marcar como vista/no vista">
+                                            <Check size={18} strokeWidth={2} />
+                                        </button>
+                                        <button onClick={() => editItemAction(item)} title="Editar">
+                                            <Edit size={18} strokeWidth={2} />
+                                        </button>
+                                        <button onClick={() => deleteItemAction(item)} title="Eliminar">
+                                            <Trash2 size={18} strokeWidth={2} />
+                                        </button>
+                                    </td>
+                                    : <td>{item.listType}</td>
+                                }
                             </tr>
                         ))}
                     </tbody>
