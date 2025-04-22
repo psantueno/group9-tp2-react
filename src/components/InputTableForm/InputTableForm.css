@@ -1,0 +1,20 @@
+.input-table-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.input-table-form input{
+    padding: 8px;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 80%;
+}
+
+.input-table-form .error-message{
+    color: red;
+    font-size: 12px;
+}
