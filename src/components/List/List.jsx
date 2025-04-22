@@ -5,7 +5,6 @@ import Item from '../Item/Item';
 export const List = ({ list }) => {
     const { subtitle, sentence, itemsList, icon, stateChangeAction, editItemAction, deleteItemAction, typeList} = list;
     const empty = itemsList.length === 0;
-    console.log(typeList);
     return (
         <div className="lista">
             <div className="header">

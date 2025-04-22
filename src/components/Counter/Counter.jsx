@@ -13,7 +13,7 @@ export const Counter = ({ titulo, items }) => {
   return (
     <div className="counter">
       <h3>{titulo}</h3>
-      <p>Total: <strong>{total}</strong></p>
+      <p><strong>{total}</strong></p>
       <ul>
         {Object.entries(porGenero).map(([genero, cantidad]) => (
           <li key={genero}>

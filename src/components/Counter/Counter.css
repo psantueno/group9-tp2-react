@@ -1,45 +1,50 @@
 .counter {
-    background-color: #f0f8ffa1;
-    padding: 0em;
-    margin:0.1rem 0;
-    border-radius: 10px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.1);
-    max-width: 450px;
-    min-height: 100px;
-    align-items: center;
-    text-align: center;
-  }
+  background-color: #f0f8ffa1;
+  padding: 20px 0;
+  margin:0.1rem 0;
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  max-width: 450px;
+  min-height: 100px;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
   
-  .counter h3 {
-    padding: 0.5rem;
-    margin: 0.3rem 0;
-    background-color: #ffffffc0;
-    margin-bottom: 0.5rem;
-    color: #000000;
-  }
-  
-  .counter ul {
-    padding: 0;
-    list-style: none;
-    margin: 0;
-    color: #000000f8;
-  }
-  
-  .counter li {
-    margin: 4px 0;
-    color: #23004bd7;
-  }
+.counter h3 {
+  margin: 0;
+  color: #000000;
+}
 
-  .contadores { 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 20px;
-  }
+.counter p{
+  font-size: 1.5rem;
+  margin: 0;
+}
 
-  .contadores > * {
-    min-width: 300px; /* Ancho mínimo fijo para los hijos */
-    flex: 1; /* Permite que los hijos crezcan uniformemente */
+.counter ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+  color: #000000f8;
+}
+
+.counter li {
+  margin: 4px 0;
+  color: #23004bd7;
+}
+
+.contadores { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 20px;
+}
+
+.contadores > * {
+  min-width: 300px; /* Ancho mínimo fijo para los hijos */
+  flex: 1; /* Permite que los hijos crezcan uniformemente */
 }
   
