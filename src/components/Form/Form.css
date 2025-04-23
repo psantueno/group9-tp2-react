@@ -39,15 +39,9 @@
     color: #ff0000;
 }
 
-/* Estilos de los inputs y selects */
-.input,
-.select {
-    width: 100%;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.modal form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 

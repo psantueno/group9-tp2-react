@@ -1,8 +1,8 @@
 import { Check, Edit, Trash2, X } from 'lucide-react';
 import { useState } from 'react';
 import "./Item.css";
-import InputTableForm from '../InputTableForm/InputTableForm';
-import SelectTableForm from '../SelectTableForm/SelectTableForm';
+import Input from '../Input/Input';
+import Select from '../Select/Select';
 
 const Item = ({ titulo, director, genero, tipo, anio, rating, listType, index, onStateChange, onEdit, onDelete, typeList }) =>{
     const [editMode, setEditMode] = useState(false);
@@ -16,7 +16,7 @@ const Item = ({ titulo, director, genero, tipo, anio, rating, listType, index, o
     const [errorMessages, setErrorMessages] = useState({
         titulo: "",
         director: "",
-        genero: "",
+        genero: "", 
         tipo: "",
         anio: "",
         rating: ""
@@ -167,23 +167,53 @@ const Item = ({ titulo, director, genero, tipo, anio, rating, listType, index, o
     if(editMode){
         return(
             <tr key={index}>
-                <td>
-                    <InputTableForm value={newTitulo} onChange={tituloChangeHandler} errorMessage={errorMessages.titulo}></InputTableForm>
+                <td className="text-width">
+                    <Input 
+                        value={newTitulo} 
+                        onChange={tituloChangeHandler} 
+                        errorMessage={errorMessages.titulo}
+                    />
                 </td>
-                <td>
-                    <InputTableForm value={newDirector} onChange={directorChangeHandler} errorMessage={errorMessages.director}></InputTableForm>
+                <td className="text-width">
+                    <Input 
+                        value={newDirector} 
+                        onChange={directorChangeHandler} 
+                        errorMessage={errorMessages.director}
+                    />
                 </td>
-                <td>
-                    <SelectTableForm options={generos} value={newGenero} onChange={generoChangeHandler} errorMessage={errorMessages.genero}></SelectTableForm>
+                <td className="text-width">
+                    <Select 
+                        options={generos} 
+                        value={newGenero} 
+                        onChange={generoChangeHandler} 
+                        errorMessage={errorMessages.genero}
+                    />
                 </td>
-                <td>
-                    <SelectTableForm options={tipos} value={newTipo} onChange={tipoChangeHandler} errorMessage={errorMessages.tipo}></SelectTableForm>
+                <td className="text-width">
+                    <Select 
+                        options={tipos} 
+                        value={newTipo} 
+                        onChange={tipoChangeHandler} 
+                        errorMessage={errorMessages.tipo}
+                    />
                 </td>
-                <td>
-                    <InputTableForm type="number" step="1" value={newAnio} onChange={anioChangeHandler} errorMessage={errorMessages.anio}></InputTableForm>
+                <td className="number-width">
+                    <Input 
+                        type="number" 
+                        step="1" 
+                        value={newAnio} 
+                        onChange={anioChangeHandler} 
+                        errorMessage={errorMessages.anio}
+                    />
                 </td>
-                <td>
-                    <InputTableForm type="number" step="0.1" value={newRating} onChange={ratingChangeHandler} errorMessage={errorMessages.rating}></InputTableForm>
+                <td className="number-width">
+                    <Input 
+                        type="number" 
+                        step="0.1" 
+                        value={newRating} 
+                        onChange={ratingChangeHandler}
+                        errorMessage={errorMessages.rating}
+                    />
                 </td>
                 <td className="edit-mode">
                     <p>Confirmar edición</p>

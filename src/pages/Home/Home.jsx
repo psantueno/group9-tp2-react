@@ -6,9 +6,35 @@ import { Form } from '../../components/Form/Form';
 import { Button } from '../../components/Button/Button';
 import { Star, Play, Search } from 'lucide-react';
 import './Home.css';
-
+import Select from '../../components/Select/Select';
+import Input from '../../components/Input/Input';
 
 const titlePage = " GESTOR DE PELICULAS Y SERIES";
+
+const generos = [
+    {label: "- Seleccione un género -", value: ""},
+    {label: "Drama", value: "Drama"},
+    {label: "Comedia", value: "Comedia"},
+    {label: "Acción", value: "Accion"},
+    {label: "Aventura", value: "Aventura"},
+    {label: "Terror", value: "Terror"},
+    {label: "Romantica", value: "Romance"},
+    {label: "Ciencia Ficción", value: "Ciencia Ficcion"}
+];
+
+const tipos = [
+    {label: "- Seleccione un tipo -", value: ""},
+    {label: "Pelicula", value: "Pelicula"},
+    {label: "Serie", value: "Serie"}
+]
+
+const ordenamiento = [
+    {label: "- Seleccione un orden -", value: ""},
+    {label: "Año (Ascendente)", value: "year-asc"},
+    {label: "Año (Descendente)", value: "year-desc"},
+    {label: "Rating (Ascendente)", value: "rating-asc"},
+    {label: "Rating (Descendente)", value: "rating-desc"}
+]
 
 export const Home = () => {
 
@@ -33,14 +59,10 @@ export const Home = () => {
     /*  
     Se encarga de manejar el evento submit del formulario, obteniendo los datos y actualizando la lista de películas/series por ver
     */
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData.entries());
+    const handleSubmit = (newItem) => {
         const toWatchList = JSON.parse(localStorage.getItem('toWatchList')) || [];
-        toWatchList.push(data);
+        toWatchList.push(newItem);
         setToWatchList(toWatchList);
-        e.target.reset();
     };
 
     const changeItemState = (titulo) => {
@@ -155,48 +177,29 @@ export const Home = () => {
 
             {/* Buscador y Filtros */}
             <div className="filters">
-                <input
-                    type="text"
+                <Input
                     placeholder="Buscar por título o director"
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="input"
+                    onChange={(newSearch) => setSearch(newSearch)}
+                ></Input>
+
+                <Select
+                    options={generos} 
+                    value={genreFilter} 
+                    onChange={(newGenre) => setGenreFilter(newGenre)}
                 />
 
-                <select
-                    className="select"
-                    value={genreFilter}
-                    onChange={(e) => setGenreFilter(e.target.value)}>
-                    <option value="">- Seleecionar género -</option>
-                    <option value="drama">Drama</option>
-                    <option value="comedia">Comedia</option>
-                    <option value="acción">Acción</option>
-                    <option value="aventura">Aventura</option>
-                    <option value="terror">Terror</option>
-                    <option value="romantica">Románticas</option>
-                    <option value="ciencia ficción">Ciencia Ficción</option>
-                </select>
+                <Select 
+                    options={tipos} 
+                    value={typeFilter} 
+                    onChange={(newType) => setTypeFilter(newType)}
+                />
 
-                <select
-                    className="select"
-                    value={typeFilter}
-                    onChange={(e) => setTypeFilter(e.target.value)}>
-                    <option value="">- Seleccionar tipo -</option>
-                    <option value="pelicula">Película</option>
-                    <option value="serie">Serie</option>
-                </select>
-
-                <select
-                    className="select"
-                    value={sortCriteria}
-                    onChange={(e) => setSortCriteria(e.target.value)}
-                >
-                    <option value="">- Ordenar por -</option>
-                    <option value="year-asc">Año (Ascendente)</option>
-                    <option value="year-desc">Año (Descendente)</option>
-                    <option value="rating-asc">Rating (Ascendente)</option>
-                    <option value="rating-desc">Rating (Descendente)</option>
-                </select>
+                <Select
+                    options={ordenamiento} 
+                    value={sortCriteria} 
+                    onChange={(newSort) => setSortCriteria(newSort)}
+                />
             </div>
 
             {/* Botón para limpiar filtros */}
@@ -237,6 +240,7 @@ export const Home = () => {
                 <Form
                     onSubmit={handleSubmit}
                     onClose={() => setShowForm(false)} // Función para cerrar el modal
+                    defaultValues={{}}
                 />
             )}
 
