@@ -13,6 +13,15 @@
 El Gestor de peliculas y series es una herramienta para almacenar información sobre peliculas y series y categorizarlas como "vistas" o "por ver" según cada usuario. Pueden editar la información de cada item o eliminarlo según deseen. Además pueden cambiar el estado de cada item de "por ver" a "vista" y visceversa.
 
 ## Instrucciones de instalacion
+Requisitos previos
+Antes de clonar el repositorio, asegurate de tener instalado lo siguiente en tu sistema:
+*Node.js y npm
+
+Node.js es el entorno de ejecución necesario para correr la app.
+
+npm es el gestor de paquetes para instalar dependencias.
+
+Descargar Node.js (incluye npm)
 
 * Clonar repositorio
 
@@ -58,44 +67,45 @@ Es el archivo de configuración del proyecto. En el se listan las dependencias d
 
 Componente de tipo boton utilizado para mostrar/ocultar el formulario de añadir una serie/pelicula, enviar el formulario y limpiar los filtros
 
-![boton con el texto "Limpiar filtros"](src/assets/image.png)
-![boton con el texto "Añadir series o películas"](src/assets/image-1.png)
+![boton con el texto "Limpiar filtros"](src/assets/botonFiltros.JPG)
+![boton con el texto "Añadir series o películas"](src/assets/botonFormulario.JPG)
 
 * Counter
 
 Componente que muestra el total de peliculas/series en las listas Vistas y Por ver, con sus respectivos desgloses de cantidad por genero en cada lista.
 
-![contador de peliculas por ver](src/assets/image-2.png)
-![contador de películas vistas](src/assets/image-10.png)
+![contador de peliculas por ver](src/assets/contadorVer.JPG)
+![contador de películas vistas](src/assets/contadorVistas.JPG)
 
 * List
 
 Componente que sirve para estructurar las listas Vistas, Por Ver y Resultados con sus respectivos items.
 
-![listado de peliculas por ver](src/assets/image-3.png)
-![listado de peliculas vistas](src/assets/image-4.png)
-![listado de resultados de los filtros](src/assets/image-5.png)
+![listado de peliculas por ver](src/assets/ListaVer.JPG)
+![listado de peliculas vistas](src/assets/listaVista.JPG)
+![listado de resultados de los filtros](src/assets/resultadoFiltro.JPG)
 
 * Item
 
 Componente que muestra los detalles de cada pelicula/serie, junto con las opciones de editar, cambiar de estado y eliminar.
 
-![item que muestra información de una película](src/assets/image-6.png)
+![item que muestra información de una película](src/assets/componentesPeli.JPG)
 
 * InputTableForm
 
 Componente de entrada de texto o numerico que es utilizado en la opción de editar un item.
 
-![inputs utilizados en editar un item](src/assets/image-7.png)
+![inputs utilizados en editar un item text](src/assets/itemEditarText.JPG)
+![inputs utilizados en editar un item num](src/assets/ItemEditarNum.JPG)
 
 * SelectTableForm
 
 Componente de tipo select que es utilizado en la opción de editar un item.
 
-![selects utilizados en editar un item](src/assets/image-8.png)
+![selects utilizados en editar un item](src/assets/itemEditarSelec.JPG)
 
 * Title
 
 Componente que renderiza un texto, utilizado como titulo principal de la página.
 
-![titulo de la página](src/assets/image-9.png)
+![titulo de la página](src/assets/compotenteR.JPG)
