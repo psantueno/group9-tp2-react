@@ -1,5 +1,3 @@
-// esto viene a cumplir un rol de hook. Se encarga de procesar el formulario.
-
 import "./InputTableForm.css";
 
 const InputTableForm = ({ type = "text", step = "1", value, onChange, errorMessage}) => {
