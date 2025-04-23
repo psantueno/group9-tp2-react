@@ -30,9 +30,23 @@ export const List = ({ list }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {itemsList.map((item, index) => (
-                            <Item titulo={item.titulo} director={item.director} genero={item.genero} tipo={item.tipo} anio={item.anio} rating={item.rating} listType={item.listType} index={index} onStateChange={stateChangeAction} onEdit={editItemAction} onDelete={deleteItemAction} typeList={typeList}></Item>
-                        ))}
+                    {itemsList.map((item, index) => (
+    <Item
+        key={index}
+        titulo={item.titulo}
+        director={item.director}
+        genero={item.genero}
+        tipo={item.tipo}
+        anio={item.anio}
+        rating={item.rating}
+        listType={item.listType}
+        index={index}
+        onStateChange={stateChangeAction}
+        onEdit={editItemAction}
+        onDelete={deleteItemAction}
+        typeList={typeList}
+    />
+))}
                     </tbody>
                 </table>
             )}

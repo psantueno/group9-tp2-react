@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Title } from '../../components/Title/Title';
 import { List } from '../../components/List/List';
 import { Counter } from '../../components/Counter/Counter';
+import { Form } from '../../components/Form/Form';
+import { Button } from '../../components/Button/Button';
 import { Star, Play, Search } from 'lucide-react';
-import Button from '../../components/Button/Button';
 import './Home.css';
 
 
-const titlePage = "Gestor de Películas y Series";
+const titlePage = " GESTOR DE PELICULAS Y SERIES";
 
 export const Home = () => {
 
@@ -28,6 +29,10 @@ export const Home = () => {
         localStorage.setItem('watchedList', JSON.stringify(watchedList));
     }, [watchedList]);
 
+
+    /*  
+    Se encarga de manejar el evento submit del formulario, obteniendo los datos y actualizando la lista de películas/series por ver
+    */
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
@@ -43,10 +48,10 @@ export const Home = () => {
         const watchedList = JSON.parse(localStorage.getItem('watchedList')) || [];
 
         const item = toWatchList.find((i) => i.titulo === titulo);
-        if(item){
+        if (item) {
             setWatchedList([...watchedList, item]);
             setToWatchList(toWatchList.filter((i) => i.titulo !== titulo));
-        }else{
+        } else {
             const item = watchedList.find((i) => i.titulo === titulo);
             setToWatchList([...toWatchList, item]);
             setWatchedList(watchedList.filter((i) => i.titulo !== titulo));
@@ -120,6 +125,7 @@ export const Home = () => {
         deleteItemAction: deleteItem
     };
 
+    /* Ordena la busqueda según el criterio seleccionado */
     const sortList = (list) => {
         if (sortCriteria === 'year-asc') {
             return [...list].sort((a, b) => a.anio - b.anio); // Ordenar por año ascendente
@@ -133,16 +139,19 @@ export const Home = () => {
         if (sortCriteria === 'rating-desc') {
             return [...list].sort((a, b) => b.rating - a.rating); // Ordenar por rating descendente
         }
-        return list; // Si no hay criterio, devolver la lista sin cambios
+        return list;
     };
 
+
+    // Se aplica el criterio de ordenamiento a la lista filtrada
     const sortedFilteredList = sortList(filteredList);
 
 
     return (
-        <div className="container">
-            <Title text={titlePage} />
 
+        <div className="container">
+
+            <Title text={titlePage} />
 
             {/* Buscador y Filtros */}
             <div className="filters">
@@ -188,23 +197,24 @@ export const Home = () => {
                     <option value="rating-asc">Rating (Ascendente)</option>
                     <option value="rating-desc">Rating (Descendente)</option>
                 </select>
-
-                <button
-                    className="button button-primary"
-                    onClick={() => {
-                        setSearch('');
-                        setGenreFilter('');
-                        setTypeFilter('');
-                        setSortCriteria('');
-                    }}
-                >
-                    Limpiar Filtros
-                </button>
             </div>
 
-            {/* Tabla de resultados */}
+            {/* Botón para limpiar filtros */}
+            <Button
+                className="button button-primary"
+                onClick={() => {
+                    setSearch('');
+                    setGenreFilter('');
+                    setTypeFilter('');
+                    setSortCriteria('');
+                }}
+                label="Limpiar Filtros"
+            />
+
+
+            {/* Tabla de resultados de busqueda o aplicacion de filtros */}
             <section className="listas">
-                {(search !== '' || genreFilter !== '' || typeFilter !== '') && filteredList.length >= 0 && <List list={{...searchFilterList, itemsList: sortedFilteredList}} />}
+                {(search !== '' || genreFilter !== '' || typeFilter !== '') && filteredList.length >= 0 && <List list={{ ...searchFilterList, itemsList: sortedFilteredList }} />}
             </section>
 
             {/* Contadores */}
@@ -213,47 +223,29 @@ export const Home = () => {
                 <Counter titulo="Total Vistas" items={watchedList} />
             </section>
 
+            {/* Botón para abrir el formulario */}
+            {
+                !showForm && <Button
+                    className={`button button-primary ${showForm ? "button-open" : ""}`}
+                    onClick={() => setShowForm(!showForm)}
+                    label="Agregar una Pelicula o Serie"
+                />
+            }
+
+            {/* Formulario para agregar una película o serie */}
+            {showForm && (
+                <Form
+                    onSubmit={handleSubmit}
+                    onClose={() => setShowForm(false)} // Función para cerrar el modal
+                />
+            )}
+
+
             {/* Listas */}
             <section className="listas">
                 <List list={toWatchListProps} />
                 <List list={watchedListProps} />
             </section>
-
-            <button className={`button ${showForm ? "button-open" : ""}`} 
-             onClick={() => setShowForm(!showForm)}>
-                {showForm ? "Cerrar Formulario" : "Añadir Pelicula o serie"}
-            </button>
-
-            {showForm && (<div className="formulario">
-                <h2>Agregar nueva película o serie</h2>
-                <form onSubmit={handleSubmit}>
-                    <input className="input" name="titulo" id="titulo" type="text" placeholder="Título" required />
-                    <input className="input" name="director" id="director" type="text" placeholder="Director" required />
-                    <input className="input" name="anio" id="anio" type="number" placeholder="Año" min="0" max="2025" required />
-
-                    <select className="select" name="genero" id="genero"  required>
-                        <option value="Género" disabled hidden>Género</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Comedia">Comedia</option>
-                        <option value="Acción">Acción</option>
-                        <option value="aventura">Aventura</option>
-                        <option value="terror">Terror</option>
-                        <option value="romantica">Románticas</option>
-                        <option value="ciencia ficción">Ciencia Ficción</option>
-                    </select>
-
-                    <input className="input" name="rating" id="rating" type="number" placeholder="Rating (1-10)" min="1" max="10" step="0.1" required />
-
-                    <select className="select" name="tipo" id="tipo" required>
-                        <option value="Tipo" disabled hidden>Tipo</option>
-                        <option value="Pelicula">Película</option>
-                        <option value="Serie">Serie</option>
-                    </select>
-
-                    <Button type="submit" className="button button-primary" label="Agregar" />
-                </form>
-            </div>
-            )}
 
         </div>
     )

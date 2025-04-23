@@ -1,4 +1,4 @@
-.counter {
+/* .counter {
   background-color: #f0f8ffa1;
   padding: 20px 0;
   margin:0.1rem 0;
@@ -35,6 +35,8 @@
   color: #23004bd7;
 }
 
+*/
+
 .contadores { 
   display: flex;
   justify-content: space-between;
@@ -43,8 +45,71 @@
   gap: 20px;
 }
 
+.counter {
+    background-color: #f0f8ffa1;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.counter-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.counter-total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+.counter-icon {
+    margin-right: 0.5rem;
+    color: #007bff;
+}
+
+.counter-genres {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.counter-genre-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #000000;
+}
+
+.genre-icon {
+    margin-right: 0.5rem;
+    color: #333;
+}
+
+.genre-name {
+    font-weight: bold;
+    margin-right: 0.3rem;
+}
+
+.genre-count {
+    color: #007bff;
+    font-weight: bold;
+}
+
 .contadores > * {
   min-width: 300px; /* Ancho mínimo fijo para los hijos */
   flex: 1; /* Permite que los hijos crezcan uniformemente */
+  
 }
   
