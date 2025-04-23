@@ -13,21 +13,22 @@
 El Gestor de peliculas y series es una herramienta para almacenar información sobre peliculas y series y categorizarlas como "vistas" o "por ver" según cada usuario. Pueden editar la información de cada item o eliminarlo según deseen. Además pueden cambiar el estado de cada item de "por ver" a "vista" y visceversa.
 
 ## Instrucciones de instalacion
-Requisitos previos
-Antes de clonar el repositorio, asegurate de tener instalado lo siguiente en tu sistema:
-*Node.js y npm
+
+* Instalar Node.js
 
 Node.js es el entorno de ejecución necesario para correr la app.
 
 npm es el gestor de paquetes para instalar dependencias.
 
-Descargar Node.js (incluye npm)
+Visita https://nodejs.org/es y sigue las instrucciones para su instalación. Node.js incluye npm
+
+Para verificar que se han instalado correctamente, ejecuta los comandos node -v y npm -v en la terminal. Si te responde algo como "v18.19.1" y "10.2.4", entonces se instalo correctamente.
 
 * Clonar repositorio
 
 Abrir la terminal y ejecutar el comando: git clone https://github.com/psantueno/group9-tp2-react.git
 
-* Entrar a la carpeta clonada
+* Entrar a la carpeta creada
 
 En la terminal, ejecutar el comando: cd group9-tp2-react
 
@@ -47,7 +48,7 @@ En tu navegador, busca la url: http://localhost:5173
 
 * main.jsx
 
-Es el punto de entrada principal de la aplicación. Se encarga de renderizar el componente principal <App/> dentro del elemento con id="root" que está en index.html.
+Es el punto de entrada principal de la aplicación. Se encarga de renderizar el componente principal `<App />` dentro del elemento con id="root" que está en index.html.
 
 * App.jsx
 
@@ -55,7 +56,7 @@ Es el componente principal de la aplicación. Desde acá se estructura el resto 
 
 * index.css
 
-Es el archivo de estilos globales de la aplicación. Los estilos afectan a todos los componentes dentro de <App/>. Debe importarse dentro del archivo main.jsx
+Es el archivo de estilos globales de la aplicación. Los estilos afectan a todos los componentes dentro de `<App />`. Debe importarse dentro del archivo main.jsx.
 
 * package.json
 
@@ -91,18 +92,24 @@ Componente que muestra los detalles de cada pelicula/serie, junto con las opcion
 
 ![item que muestra información de una película](src/assets/componentesPeli.JPG)
 
-* InputTableForm
+* Form
 
-Componente de entrada de texto o numerico que es utilizado en la opción de editar un item.
+Componente que muestra un formulario para agergar un nuevo item.
 
-![inputs utilizados en editar un item text](src/assets/itemEditarText.JPG)
-![inputs utilizados en editar un item num](src/assets/ItemEditarNum.JPG)
+![formulario para agregar una nueva pelicula/serie](src/assets/form.png)
 
-* SelectTableForm
+* Input
 
-Componente de tipo select que es utilizado en la opción de editar un item.
+Componente de entrada de texto o numerico que es utilizado en las opciones de editar un item y agregar un item. Además cuenta con un mensaje de error personalizado.
 
-![selects utilizados en editar un item](src/assets/itemEditarSelec.JPG)
+![input para el titulo con mensaje de error](src/assets/input_con_error.png)
+
+* Select
+
+Componente de tipo select que es utilizado en la opción de editar un item y agregar un item. Además cuenta con un mensaje de error personalizado.
+
+![input tipo select con opciones](src/assets/select.png)
+![input tipo select con mensaje de error](src/assets/select_con_error.png)
 
 * Title
 

@@ -9,8 +9,8 @@
 }
 
 .lista {
-  min-width: 600px; /* Ancho mínimo para mantener consistencia */
-  width: 100%;
+  min-width: 800px; /* Ancho mínimo para mantener consistencia */
+  max-width: 800px; /* Ancho mínimo para mantener consistencia */
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: 0%;

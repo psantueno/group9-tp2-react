@@ -31,3 +31,11 @@
     transform: scale(1.1);
     color: #007BFF;
 }
+
+.text-width{
+    width: 15%;
+}
+
+.number-width{
+    width: 12%;
+}

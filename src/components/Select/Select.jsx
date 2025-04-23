@@ -1,7 +1,7 @@
-import "./SelectTableForm.css";
+import "./Select.css";
 import { useState } from "react";
 
-const SelectCardForm = ({ options, value = "", onChange, errorMessage }) => {
+const Select = ({ options, value = "", name, onChange, errorMessage }) => {
     const [selected, setSelected] = useState(value);
     const handleChange = (e) => {
         onChange(e.target.value);
@@ -24,4 +24,4 @@ const SelectCardForm = ({ options, value = "", onChange, errorMessage }) => {
     );
 };
 
-export default SelectCardForm;
+export default Select;
