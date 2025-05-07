@@ -39,6 +39,8 @@ const Item = ({ titulo, director, genero, tipo, anio, rating, listType, index, o
         {label: "Serie", value: "Serie"}
     ]
 
+    //Podrian unificar los changeHandler en una sola funcion (handleChange(field, value)), con esto reducen repeticion
+
     const tituloChangeHandler = (changedTitulo) => {
         setNewTitulo(changedTitulo);
     }

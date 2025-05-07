@@ -1,3 +1,24 @@
+Correcciones:
+
+La app está muy bien estructurada: uso claro de componentes, separacion de responsabilidades y consistencia en nombres.
+Tiene buen manejo de estado local y localStorage.
+Se nota un trabajo cuidado en validaciones (tanto en el Form como en el Item).
+Buen uso de iconos y componentes reutilizables (Input, Select, Button, etc.).
+Se implementaron correctamente funcionalidades clave: agregar, editar, eliminar, filtrar, ordenar y cambiar estado de las películas.
+
+Posibles mejoras
+Reducción de estados duplicados:
+    useState innecesario dentro de Select si el padre ya controla el estado.
+
+Consistencia de propiedades:
+    En algunas partes se usa rating, en otras calificacion, anio vs year. Conviene unificar.
+
+Formularios controlados:
+    En algunos componentes (Item, Form) los inputs podrían simplificarse usando un solo useState con un objeto.
+
+
+Nota: 10.
+
 # TP N°2: React (Primera Parte)
 
 ## 🧑‍🤝‍🧑 Integrantes del Grupo 9
