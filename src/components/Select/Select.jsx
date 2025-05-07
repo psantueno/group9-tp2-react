@@ -2,6 +2,7 @@ import "./Select.css";
 import { useState } from "react";
 
 const Select = ({ options, value = "", name, onChange, errorMessage }) => {
+  //Este use state no deberia existir, directamente usar el value
     const [selected, setSelected] = useState(value);
     const handleChange = (e) => {
         onChange(e.target.value);

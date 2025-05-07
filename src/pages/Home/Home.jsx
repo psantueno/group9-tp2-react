@@ -47,6 +47,7 @@ export const Home = () => {
     const [typeFilter, setTypeFilter] = useState('');  // Estado para el filtro tipo (Peli/Serie)
     const [sortCriteria, setSortCriteria] = useState(''); // Estado para el criterio de ordenamiento
 
+    //Estos dos podrian ser un solo useEffect
     useEffect(() => {
         localStorage.setItem('toWatchList', JSON.stringify(toWatchList));
     }, [toWatchList]);
